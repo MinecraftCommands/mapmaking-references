@@ -22,7 +22,7 @@ blah
 * ![Integer][int] **SpawnZ**: ''See above.''
 * ![Byte][byte] **SpawnForced**: 1 or 0 (true/false) - True if the player should spawn at the above coordinates even if no bed can be found.
 * ![Byte][byte] **Sleeping**: 1 or 0 (true/false) - true if the player was in a bed; has no effect on whether the player is in a bed when they log in.
-* :three: **SleepTimer**: The number of ticks the player had been in bed. No effect.
+* ![Short Integer][short] **SleepTimer**: The number of ticks the player had been in bed. No effect.
 * ![Integer][int] **foodLevel**: The value of the hunger bar; 20 is full. See [[Hunger]].
 * ![Float][float] **foodExhaustionLevel**: See [[Hunger]].
 * ![Float][float] **foodSaturationLevel**: See [[Hunger]].
@@ -70,7 +70,7 @@ A negative value is similar except that the item can be used by right-clicking, 
 
 A stack of more than 64 may decrease if moved to or from a container, or the mouse pointer may drop only as many as normally fill a stack and continue to hold the remainder. A stack of ''N'' damaged tools used until "they" break will become ''N'' – 1 ''intact'' tools, but if the stack is split then both tools keep their damage.</ref>
 * ![Byte][byte] **Slot**: May not exist. The inventory slot the item is in.
-* :three: **Damage**: The data value for this item. The name "Damage" comes from when only tools used this value, now many other items use this value for other purposes. For blocks, it is the 4-bit "block data" tag that determines a variant of the block. Defaults to 0.{{upcoming**until=1.13**
+* ![Short Integer][short] **Damage**: The data value for this item. The name "Damage" comes from when only tools used this value, now many other items use this value for other purposes. For blocks, it is the 4-bit "block data" tag that determines a variant of the block. Defaults to 0.{{upcoming**until=1.13**
 * ![String][string] **id**: [[Data values|Item/Block ID]] (This is a Short tag prior to 1.8.) If not specified, Minecraft changes the item to [[stone]] (setting ID to 1 and Damage to 0, and ignoring any existing Damage value) when loading the chunk or summoning the item .<!-- Tested using NBTExplorer in 1.8.2-pre1 -->
 * ![Compound][compound] **tag**: Additional information about the item, discussed in the below sections. This tag is optional for most items.
 
@@ -101,8 +101,8 @@ There are two ways enchantments are associated with items; the first way is that
 ![Compound][compound] **tag**: The `tag` tag.
 * ![List][list] **ench**: Contains [[enchantment]]s on this item that affect the way the item works.
 * * ![Compound][compound]: A single enchantment.
-* * * :three: **id**: ID of the enchantment.
-* * * :three: **lvl**: Level of the enchantment, where 1 is level 1.
+* * * ![Short Integer][short] **id**: ID of the enchantment.
+* * * ![Short Integer][short] **lvl**: Level of the enchantment, where 1 is level 1.
 * ![List][list] **StoredEnchantments**: Contains enchantments for [[enchanted book]]s.
 * * ![Compound][compound]: A stored enchantment, identical structure to each enchantment in `ench`.
 * ![Integer][int] **RepairCost**: Number of enchantment levels to add to the base level cost when repairing, combining, or renaming this item with an [[Anvil]].
@@ -235,4 +235,3 @@ Both [[book and quill]] and [[written book]] use the `tag` tag to store informat
 [compound]: https://i.imgur.com/ydb97dG.png
 [int_array]: https://i.imgur.com/wfmqZFo.png
 [long_array]: https://i.imgur.com/wfmqZFo.png
-
